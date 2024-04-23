@@ -2,7 +2,7 @@ import pygame
 
 
 def main():
-    pygame.int() 
+    pygame.init() 
     pygame.display.set_caption("Interactive Art Gallery")
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     running = True
