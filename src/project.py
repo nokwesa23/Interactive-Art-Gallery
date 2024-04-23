@@ -14,6 +14,9 @@ def loading_artworks():
                  'Room3': [(artwork_5), (artwork_6)]}
     return artworks
 
+def displaying_artworks():
+    return
+
 
 def main():
     pygame.init() 
