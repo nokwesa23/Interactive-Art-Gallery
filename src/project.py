@@ -1,6 +1,6 @@
 import pygame
 
-class Artwork():
+class Artworks():
     
     def __init__(self, image_path, title, artist, description):
         self.image = pygame.image.load(image_path)
@@ -8,6 +8,12 @@ class Artwork():
         self.artist = artist
         self.description = description
         
+def load_artworks_from_text(filename):
+    artworks = []
+    with open(filename, 'r') as file:
+        for line in file:
+            image_path, title, artist, description = line.strip().split(',')
+
 
 
 def main():
