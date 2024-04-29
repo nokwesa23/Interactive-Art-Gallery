@@ -23,6 +23,7 @@ def main():
     pygame.display.set_caption("Interactive Art Gallery")
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     running = True
+    artworks = load_artworks_from_text('artworks.txt')
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
