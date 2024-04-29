@@ -13,7 +13,9 @@ def load_artworks_from_text(filename):
     with open(filename, 'r') as file:
         for line in file:
             image_path, title, artist, description = line.strip().split(',')
-
+            image = pygame.image.load(image_path)
+            artworks.append(Artworks(image,title,artist,description))
+    return artworks
 
 
 def main():
