@@ -22,11 +22,18 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
     for i, artwork in enumerate(artworks[start_index:start_index + artworks_per_page]):
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
-        artwork_resized_image = pygame.transform.scale(artwork_image, (max_artwork_width, max_artwork_height))
-        x_offset = (i * (max_artwork_width + 20)) + 20
+        artwork_aspect_ratio = artwork_image.get_width() / artwork_image.get_height()
+        if artwork_aspect_ratio >1:
+            new_width = max_artwork_width
+            new_height = int(max_artwork_height + artwork_aspect_ratio)
+        else:
+            new_height = max_artwork_height
+            new_width = int (max_artwork_height * artwork_aspect_ratio)
+        artwork_image = pygame.transform.scale(artwork_image, (new_width,new_height))
+        x_offset = (max_artwork_width - new_width) // 2 + (i *(max_artwork_width+ 20)) + 20
         if i >= artworks_per_page // 2:
             y_offset += max_artwork_height + 20
-        screen.blit(artwork_resized_image, (x_offset,y_offset))
+        screen.blit(artwork_image, (x_offset,y_offset))
 
         # need to add other things on screen to display
     pygame.display.flip()
