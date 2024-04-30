@@ -18,7 +18,7 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
     screen.fill((0,0,0))
     max_artwork_width = (screen.get_width() - (artworks_per_page + 1) * 20) // artworks_per_page
     max_artwork_height = (screen.get_height() - 3 * 30) // 2
-    y_offset = 20
+    y_offset = (screen.get_height() - max_artwork_height) // 2 
     for i, artwork in enumerate(artworks[start_index:start_index + artworks_per_page]):
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
@@ -30,9 +30,7 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
             new_height = max_artwork_height
             new_width = int (max_artwork_height * artwork_aspect_ratio)
         artwork_image = pygame.transform.scale(artwork_image, (new_width,new_height))
-        x_offset = (max_artwork_width - new_width) // 2 + (i *(max_artwork_width+ 20)) + 20
-        if i >= artworks_per_page // 2:
-            y_offset += max_artwork_height + 20
+        x_offset = max_artwork_width * i - (new_width - max_artwork_width) // 2
         screen.blit(artwork_image, (x_offset,y_offset))
 
         # need to add other things on screen to display
