@@ -19,6 +19,7 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+            display_artworks(screen, artworks, current_room)
 
     pygame.quit()
 
