@@ -24,10 +24,15 @@ def main():
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     running = True
     artworks = load_artworks_from_text('artworks.txt')
+    current_artwork_displayed_idex = 0
+    
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False 
+                running = False
+    
+
+
     pygame.quit()
 
 
