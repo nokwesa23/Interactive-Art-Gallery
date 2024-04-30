@@ -10,7 +10,13 @@ def load_artworks_from_file(filename):
 
 
 def display_artworks(screen, artworks, current_room):
-    return
+    screen.fill((0,0,0))
+    for artwork in artworks:
+        image_path, title, artist, description = artwork
+        artwork_image = pygame.image.load(image_path)
+        screen.blit(artwork_image, (50,50))
+        # need to add other things on screen to display
+    pygame.display.flip()
 
 def main():
     pygame.init() 
