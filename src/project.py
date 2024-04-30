@@ -17,7 +17,7 @@ def load_artworks_from_file(filename):
 def display_artworks(screen, artworks, start_index, current_room):
     screen.fill((0,0,0))
     y_offset = 50
-    for artwork in artworks:
+    for artwork in artworks[start_index:start_index+2]:
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
         screen.blit(artwork_image, (50,y_offset))
