@@ -1,30 +1,31 @@
 import pygame
 
-class Artworks():
+""" class Artworks():
     
     def __init__(self, image_path, title, artist, description):
         self.image = pygame.image.load(image_path)
         self.title = title
         self.artist = artist
-        self.description = description
+        self.description = description 
         
-def load_artworks_from_text(filename):
+ def load_artworks_from_text(filename):
     artworks = []
     with open(filename, 'r') as file:
         for line in file:
             image_path, title, artist, description = line.strip().split(',')
             image = pygame.image.load(image_path)
             artworks.append(Artworks(image,title,artist,description))
-    return artworks
+    return artworks """
 
 
 def main():
     pygame.init() 
-    pygame.display.set_caption("Interactive Art Gallery")
+    """ pygame.display.set_caption("Interactive Art Gallery")
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     running = True
     artworks = load_artworks_from_text('artworks.txt')
     current_screen_displayed_idex = 0
+    artworks_per_screen = 2
     
     while running:
         for event in pygame.event.get():
@@ -32,7 +33,7 @@ def main():
                 running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    current
+                    current_screen_displayed_idex = """
     
 
 
