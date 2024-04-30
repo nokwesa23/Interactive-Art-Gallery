@@ -14,7 +14,7 @@ def load_artworks_from_file(filename):
     return artworks
 
 
-def display_artworks(screen, artworks, current_room):
+def display_artworks(screen, artworks, start_index, current_room):
     screen.fill((0,0,0))
     y_offset = 50
     for artwork in artworks:
