@@ -6,7 +6,7 @@ def load_artworks_from_file(filename):
         for line in file:
             image_path, title, artist, description = line.strip().split(',')
             artworks.append((image_path, title, artist, description))
-    return 
+    return artworks
 
 
 def display_artworks(screen, artworks, current_room):
