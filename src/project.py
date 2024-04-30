@@ -30,7 +30,7 @@ def main():
     pygame.display.set_caption("Interactive Art Gallery")
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     artworks = load_artworks_from_file('artworks.txt')
-    current_room = 'Room 1'
+    # current_room = 'Room 1'
     artworks_per_page = 2
     current_page = 0
     running = True
