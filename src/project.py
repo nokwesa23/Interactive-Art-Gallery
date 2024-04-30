@@ -16,14 +16,18 @@ def load_artworks_from_file(filename):
 
 def display_artworks(screen, artworks, start_index, artworks_per_page):
     screen.fill((0,0,0))
-    y_offset = 50
     max_artwork_width = (screen.get_width() - (artworks_per_page + 1) * 20) // artworks_per_page
     max_artwork_height = (screen.get_height() - 3 * 30) // 2
-    for artwork in artworks[start_index:start_index+2]:
+    y_offset = 50
+    for i, artwork in enumerate(artworks[start_index + artworks_per_page]):
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
-        screen.blit(artwork_image, (50,y_offset))
-        y_offset += artwork_image.get_height() + 20
+        artwork_resized_image = pygame.transform.scale(artwork_image, (max_artwork_width, max_artwork_height))
+        x_offset = (i * (max_artwork_width + 20)) + 20
+        if i >= artworks_per_page // 2:
+            y_offset += max_artwork_height + 20
+        screen.blit(artwork_image, (x_offset,y_offset))
+
         # need to add other things on screen to display
     pygame.display.flip()
 
