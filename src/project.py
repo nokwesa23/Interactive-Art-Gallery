@@ -19,7 +19,7 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
     max_artwork_width = (screen.get_width() - (artworks_per_page + 1) * 20) // artworks_per_page
     max_artwork_height = (screen.get_height() - 3 * 30) // 2
     y_offset = 50
-    for i, artwork in enumerate(artworks[start_index + artworks_per_page]):
+    for i, artwork in enumerate(artworks[start_index:start_index + artworks_per_page]):
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
         artwork_resized_image = pygame.transform.scale(artwork_image, (max_artwork_width, max_artwork_height))
