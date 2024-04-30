@@ -44,7 +44,7 @@ def main():
                         current_page = max(current_page - 1, 0)
                     elif event.key == pygame.K_RIGHT:
                         current_page = min(current_page + 1, len(artworks) // artworks_per_page )
-            display_artworks(screen, artworks, current_room * artworks_per_page, current_room)
+            display_artworks(screen, artworks, current_page * artworks_per_page, current_room)
 
     pygame.quit()
 
