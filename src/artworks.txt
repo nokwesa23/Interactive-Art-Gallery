@@ -1,4 +1,4 @@
-girl-with_a_pearl_earring.jpg, Girl With a Pearl Earring, Johannes Vermeer, Description 
+girl_with_a_pearl_earring.jpg, Girl With a Pearl Earring, Johannes Vermeer, Description 
 a_sunday_afternoon.jpg, A Sunday Afternoon on the Island of La Grande Jatte, Georges Seurat, Description 
 the_kiss.jpg, The Kiss, Gustav Klimt, Description
 the_scream.jpg, The Scream, Edvard Munch, Description

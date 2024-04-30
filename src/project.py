@@ -4,8 +4,13 @@ def load_artworks_from_file(filename):
     artworks = []
     with open(filename, 'r') as file:
         for line in file:
-            image_path, title, artist, description = line.strip().split(',')
-            artworks.append((image_path, title, artist, description))
+            parts = line.strip().split(',')
+            if len(parts) == 4:
+                image_path = parts[0].strip()
+                name = parts[1].strip()
+                artist = parts[2].strip()
+                description = parts[3].strip()
+                artworks.append((image_path, name, artist, description))
     return artworks
 
 
