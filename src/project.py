@@ -11,10 +11,12 @@ def load_artworks_from_file(filename):
 
 def display_artworks(screen, artworks, current_room):
     screen.fill((0,0,0))
+    y_offset = 50
     for artwork in artworks:
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
-        screen.blit(artwork_image, (50,50))
+        screen.blit(artwork_image, (50,y_offset))
+        y_offset += artwork_image.get_height() + 20
         # need to add other things on screen to display
     pygame.display.flip()
 
