@@ -14,7 +14,7 @@ def load_artworks_from_file(filename):
     return artworks
 
 
-def display_artworks(screen, artworks, start_index, current_room):
+def display_artworks(screen, artworks, start_index, artworks_per_page):
     screen.fill((0,0,0))
     y_offset = 50
     for artwork in artworks[start_index:start_index+2]:
@@ -43,7 +43,7 @@ def main():
                         current_page = max(current_page - 1, 0)
                     elif event.key == pygame.K_RIGHT:
                         current_page = min(current_page + 1, len(artworks) // artworks_per_page )
-        display_artworks(screen, artworks, current_page * artworks_per_page, current_room)
+        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
 
     pygame.quit()
 
