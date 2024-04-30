@@ -24,12 +24,15 @@ def main():
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     running = True
     artworks = load_artworks_from_text('artworks.txt')
-    current_artwork_displayed_idex = 0
+    current_screen_displayed_idex = 0
     
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    current
     
 
 
