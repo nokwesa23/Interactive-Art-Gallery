@@ -3,6 +3,10 @@ import pygame
 def load_artworks_from_file(filename):
     return 
 
+
+def display_artworks(screen, artworks, current_room):
+    return
+
 def main():
     pygame.init() 
     pygame.display.set_caption("Interactive Art Gallery")
