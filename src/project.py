@@ -38,8 +38,10 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
     pygame.display.flip()
 
 
-def display_artwork_info():
-    return 
+def display_artwork_info(artworks, current_page, index):
+    artworks_per_page = 2
+    name, artist, description = artworks[current_page * artworks_per_page + index]
+    print(f"Name: {name}\nArtist: {artist}\nDescription: {description}")
 
 def main():
     pygame.init() 
