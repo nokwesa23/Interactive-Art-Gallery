@@ -49,8 +49,8 @@ def display_artwork_info(screen, font, artworks, current_page, index):
     if len(artwork_info) >= 4:
         name, artist, description = artwork_info[1:4]
         info_lines = [
-            f"Name {name}"
-            f"Artist: {artist}"
+            f"Name: {name}",
+            f"Artist: {artist}",
             f"Description: {description}"
         ]
         render_text(screen, font, info_lines)
@@ -58,8 +58,9 @@ def display_artwork_info(screen, font, artworks, current_page, index):
         print("Invaild artwork information:", artwork_info)
 
 def render_text(screen, font, lines):
-    box_width = 400
-    box_height = len(lines) * 30 + 20
+    line_height = font.get_height() + 5
+    box_width = 600
+    box_height = len(lines) * line_height + 20
     box_surface = pygame.Surface((box_width, box_height))
     box_surface.fill((255,255,255))
     y_offset = 10
@@ -68,7 +69,7 @@ def render_text(screen, font, lines):
         text_rect = text_surface.get_rect()
         text_rect.topleft = (10, y_offset)
         box_surface.blit(text_surface, text_rect)
-        y_offset += 30
+        y_offset += line_height
     screen.blit(box_surface, (screen.get_width() // 2 - box_width // 2, screen.get_height() // 2 - box_height // 2))
     pygame.display.flip()
 
