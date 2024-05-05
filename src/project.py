@@ -45,8 +45,12 @@ def render_button(screen, font, max_artwork_height, x_offset, y_offset):
 
 def display_artwork_info(artworks, current_page, index):
     artworks_per_page = 2
-    name, artist, description = artworks[current_page * artworks_per_page + index]
-    print(f"Name: {name}\nArtist: {artist}\nDescription: {description}")
+    artwork_info = artworks[current_page * artworks_per_page + index]
+    if len(artwork_info) >= 4:
+        name, artist, description = artwork_info[1:4]
+        print(f"Name: {name}\nArtist: {artist}\nDescription: {description}")
+    else:
+        print("Invaild artwork information:", artwork_info)
 
 def main():
     pygame.init() 
