@@ -64,7 +64,7 @@ def display_artwork_info(screen, font, artworks, current_page, index):
 def render_text(screen, font, lines):
     line_height = font.get_height() + 5
     box_width = 600
-    box_height = len(lines) * line_height + 20
+    box_height = len(lines) * line_height + 50
     box_surface = pygame.Surface((box_width, box_height))
     box_surface.fill((255,255,255))
     y_offset = 10
