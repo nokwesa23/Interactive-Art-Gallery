@@ -4,4 +4,3 @@ the_kiss.jpg, The Kiss, Gustav Klimt, Made back in 1907 - 1908 with oil paint an
 the_scream.jpg, The Scream, Edvard Munch, Made back in 1893 with oil paint/tempera/pastels - Depicts a person screaming with a landscape of bright color behind them.
 mona_lisa.jpg, the Mona Lisa, Leonardo da Vinci, Made back in 1503 with oil paint - Depicts a woman who is posed facing the viewer.
 the_starry_night.jpg, The Starry Night, Vincent van Gogh,  Made back in 1889 with oil paint - Depicts a view of a city in the middle of the night through the use of the impasto technique.
-
