@@ -13,7 +13,6 @@ def load_artworks_from_file(filename):
                 artworks.append((image_path, name, artist, description))
     return artworks
 
-
 def display_artworks(screen, artworks, start_index, artworks_per_page, current_page):
     screen.fill((0,0,0))
     max_artwork_width = (screen.get_width() - (artworks_per_page + 1) * 20) // artworks_per_page
@@ -41,7 +40,6 @@ def display_artworks(screen, artworks, start_index, artworks_per_page, current_p
         render_button(screen, pygame.font.SysFont(None, 24), max_artwork_height, x_offset, y_offset)
     pygame.display.flip()
 
-
 def render_button(screen, font, max_artwork_height, x_offset, y_offset):
     button_text = "Learn more about this artwork"
     button_text_surface = font.render(button_text, True, (255,255,255))
@@ -61,7 +59,7 @@ def display_artwork_info(screen, font, artworks, current_page, index):
         ]
         render_text(screen, font, info_lines)
     else:
-        print("Invaild artwork information:", artwork_info)
+        print("Invalid artwork information:", artwork_info)
 
 def render_text(screen, font, lines):
     line_height = font.get_height() + 5
@@ -101,7 +99,7 @@ def main():
                 if event.key == pygame.K_LEFT:
                     current_page = max(current_page - 1, 0)
                 elif event.key == pygame.K_RIGHT:
-                    current_page = min(current_page + 1, max_pages - 1)  # Adjusted here to limit to max_pages
+                    current_page = min(current_page + 1, max_pages - 1)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.pos[0] < screen.get_width() / 2:
                     index = 0
