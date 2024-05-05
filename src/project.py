@@ -37,23 +37,8 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
     pygame.display.flip()
 
 
-def display_description(screen, description):
-    description_surface = pygame.Surface((screen.get_width() // 2, screen.get_height() // 2))
-    description_surface.fill((255,255,255))
-    font = pygame.font.SysFont(None, 20)
-    lines = description.split('\n')
-    y_offset = 20
-    for line in lines:
-        text_surface = font.render(line, True, (0,0,0))
-        description_surface.blit(text_surface, (20, y_offset))
-        y_offset += 30
-    screen.blit(description_surface, ((screen.get_width() - description_surface.get_width()) // 2
-                                      (screen.get_height() - description_surface.get_height()) // 2))
-    pygame.display.flip()
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                return
+def display_description():
+    return 
 
 def main():
     pygame.init() 
