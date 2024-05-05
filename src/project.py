@@ -1,5 +1,49 @@
 import pygame
 
+def main():
+    pygame.init() 
+    pygame.display.set_caption("Interactive Art Gallery")
+    screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+    artworks = load_artworks_from_file('artworks.txt')
+    artworks_per_page = 2
+    font = pygame.font.SysFont(None, 24)
+    current_page = 0
+    display_info = False
+    info_index = None
+    running = True
+    max_pages = len(artworks) // artworks_per_page
+    if len(artworks) % artworks_per_page != 0:
+        max_pages += 1
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    current_page = max(current_page - 1, 0)
+                elif event.key == pygame.K_RIGHT:
+                    current_page = min(current_page + 1, max_pages - 1)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.pos[0] < screen.get_width() / 2:
+                    index = 0
+                else:
+                    index = 1
+                display_info = True
+                info_index = index
+        if display_info:
+            display_artwork_info(screen, font, artworks, current_page, info_index)
+            pygame.display.flip()
+            waiting_for_click = True
+            while waiting_for_click:
+                for event in pygame.event.get():
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        waiting_for_click = False 
+            display_info = False
+        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page, current_page)
+    
+    pygame.quit()
+
+
 def load_artworks_from_file(filename):
     artworks = []
     with open(filename, 'r') as file:
@@ -89,49 +133,6 @@ def render_text(screen, font, lines):
     screen.blit(box_surface, (screen.get_width() // 2 - box_width // 2, screen.get_height() // 2 - box_height // 2))
     pygame.display.flip()
 
-
-def main():
-    pygame.init() 
-    pygame.display.set_caption("Interactive Art Gallery")
-    screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-    artworks = load_artworks_from_file('artworks.txt')
-    artworks_per_page = 2
-    font = pygame.font.SysFont(None, 24)
-    current_page = 0
-    display_info = False
-    info_index = None
-    running = True
-    max_pages = len(artworks) // artworks_per_page
-    if len(artworks) % artworks_per_page != 0:
-        max_pages += 1
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    current_page = max(current_page - 1, 0)
-                elif event.key == pygame.K_RIGHT:
-                    current_page = min(current_page + 1, max_pages - 1)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.pos[0] < screen.get_width() / 2:
-                    index = 0
-                else:
-                    index = 1
-                display_info = True
-                info_index = index
-        if display_info:
-            display_artwork_info(screen, font, artworks, current_page, info_index)
-            pygame.display.flip()
-            waiting_for_click = True
-            while waiting_for_click:
-                for event in pygame.event.get():
-                    if event.type == pygame.MOUSEBUTTONDOWN:
-                        waiting_for_click = False 
-            display_info = False
-        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page, current_page)
-    
-    pygame.quit()
 
 if __name__ == "__main__":
     main()
