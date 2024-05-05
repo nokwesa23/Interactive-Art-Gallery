@@ -32,12 +32,13 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
         artwork_image = pygame.transform.scale(artwork_image, (new_width,new_height))
         x_offset = max_artwork_width * i - (new_width - max_artwork_width) // 2
         screen.blit(artwork_image, (x_offset,y_offset))
+        
 
         # need to add other things on screen to display
     pygame.display.flip()
 
 
-def display_description():
+def display_artwork_info():
     return 
 
 def main():
@@ -48,6 +49,10 @@ def main():
     # current_room = 'Room 1'
     artworks_per_page = 2
     current_page = 0
+    font = pygame.font.SysFont(None, 24)
+    text_surface = font.render("Learn more about the artwork", True, (255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.topleft = (50,50)
     running = True
     while running:
         for event in pygame.event.get():
