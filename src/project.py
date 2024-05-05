@@ -54,7 +54,11 @@ def display_artwork_info(screen, font, artworks, current_page, index):
         print("Invaild artwork information:", artwork_info)
 
 def render_text(screen, font, text):
-
+    text_surface = font.renfer(text, True, (255,255,255))
+    text_rect = text_surface.get_rect()
+    text_rect.center = (screen.get_width() // 2, screen.getheight() //2)
+    screen.blit(text_surface, text_rect)
+    pygame.display.flip()
 
 def main():
     pygame.init() 
