@@ -48,12 +48,16 @@ def display_artwork_info(screen, font, artworks, current_page, index):
     artwork_info = artworks[current_page * artworks_per_page + index]
     if len(artwork_info) >= 4:
         name, artist, description = artwork_info[1:4]
-        info_text = f"Name: {name}\nArtist: {artist}\nDescription: {description}"
-        render_text(screen, font, info_text)
+        info_lines = [
+            f"Name {name}"
+            f"Artist: {artist}"
+            f"Description: {description}"
+        ]
+        render_text(screen, font, info_lines)
     else:
         print("Invaild artwork information:", artwork_info)
 
-def render_text(screen, font, text):
+def render_text(screen, font, lines):
     text_surface = font.render(text, True, (255,255,255))
     text_rect = text_surface.get_rect()
     text_rect.center = (screen.get_width() // 2, screen.get_height() //2)
