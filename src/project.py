@@ -43,17 +43,18 @@ def render_button(screen, font, max_artwork_height, x_offset, y_offset):
     button_text_rect.topleft = (x_offset, y_offset + max_artwork_height + 10)
     screen.blit(button_text_surface, button_text_rect)
 
-def display_artwork_info(artworks, current_page, index):
+def display_artwork_info(screen, font, artworks, current_page, index):
     artworks_per_page = 2
     artwork_info = artworks[current_page * artworks_per_page + index]
     if len(artwork_info) >= 4:
         name, artist, description = artwork_info[1:4]
-        print(f"Name: {name}\nArtist: {artist}\nDescription: {description}")
+        info_text = f"Name: {name}\nArtist: {artist}\nDescription: {description}"
+        render_text(screen, font, info_text)
     else:
         print("Invaild artwork information:", artwork_info)
 
 def render_text(screen, font, text):
-    
+
 
 def main():
     pygame.init() 
@@ -61,6 +62,7 @@ def main():
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     artworks = load_artworks_from_file('artworks.txt')
     artworks_per_page = 2
+    font = pygame.font.SysFont(None, 24)
     current_page = 0
     running = True
     while running:
@@ -77,7 +79,7 @@ def main():
                     index = 0
                 else:
                     index = 1
-                display_artwork_info(artworks, current_page, index)
+                display_artwork_info(screen, font, artworks, current_page, index)
         display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
 
     pygame.quit()
