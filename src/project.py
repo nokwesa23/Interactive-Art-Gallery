@@ -71,6 +71,10 @@ def main():
                         current_page = max(current_page - 1, 0)
                     elif event.key == pygame.K_RIGHT:
                         current_page = min(current_page + 1, len(artworks) // artworks_per_page )
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if text_rect.collidepoint(event.pos):
+                        index = 0 if event.pos[0] < screen.get_width() / 2 else 1
+                        display_artwork_info(artworks, current_page, index)
         display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
 
     pygame.quit()
