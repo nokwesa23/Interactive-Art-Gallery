@@ -36,6 +36,10 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
         # need to add other things on screen to display
     pygame.display.flip()
 
+
+def display_description(screen, descriptioon):
+    
+
 def main():
     pygame.init() 
     pygame.display.set_caption("Interactive Art Gallery")
