@@ -38,6 +38,10 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
 
 
 def display_description(screen, descriptioon):
+    description_surface = pygame.Surface((screen.get_width() // 2, screen.get_height() // 2))
+    description_surface.fill((255,255,255))
+    
+    
     
     return
 
