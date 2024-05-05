@@ -69,13 +69,26 @@ def render_text(screen, font, lines):
     box_surface.fill((255,255,255))
     y_offset = 10
     for line in lines:
-        text_surface = font.render(line, True, (0,0,0))
-        text_rect = text_surface.get_rect()
-        text_rect.topleft = (10, y_offset)
-        box_surface.blit(text_surface, text_rect)
-        y_offset += line_height
+        words = line.split()
+        wrapped_lines = []
+        current_line = ""
+        for word in words:
+            test_line = current_line + word + " "
+            if font.size(test_line)[0] <= box_width - 20:
+                current_line = test_line
+            else:
+                wrapped_lines.append(current_line)
+                current_line = word + " "
+        wrapped_lines.append(current_line)
+        for wrapped_line in wrapped_lines:
+            text_surface = font.render(wrapped_line, True, (0,0,0))
+            text_rect = text_surface.get_rect()
+            text_rect.topleft = (10, y_offset)
+            box_surface.blit(text_surface, text_rect)
+            y_offset += line_height
     screen.blit(box_surface, (screen.get_width() // 2 - box_width // 2, screen.get_height() // 2 - box_height // 2))
     pygame.display.flip()
+
 
 def main():
     pygame.init() 
