@@ -64,10 +64,12 @@ def render_text(screen, font, lines):
     box_surface.fill((255,255,255))
     y_offset = 10
     for line in lines:
-        text_surface = font.render(line, True, (255,255,255))
+        text_surface = font.render(line, True, (0,0,0))
         text_rect = text_surface.get_rect()
-        text_rect.center = (screen.get_width() // 2, screen.get_height() //2)
-    screen.blit(text_surface, text_rect)
+        text_rect.topleft = (10, y_offset)
+        box_surface.blit(text_surface, text_rect)
+        y_offset += 30
+    screen.blit(box_surface, (screen.get_width() // 2 - box_width // 2, screen.get_height() // 2 - box_height // 2))
     pygame.display.flip()
 
 def main():
