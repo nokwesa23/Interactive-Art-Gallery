@@ -44,7 +44,6 @@ def render_button(screen, font, max_artwork_height, x_offset, y_offset):
     screen.blit(button_text_surface, button_text_rect)
 
 def display_artwork_info(screen, font, artworks, current_page, index):
-    font = pygame.font.SysFont(None, 24, (0,0,0))
     artworks_per_page = 2
     artwork_info = artworks[current_page * artworks_per_page + index]
     if len(artwork_info) >= 4:
@@ -63,9 +62,11 @@ def render_text(screen, font, lines):
     box_height = len(lines) * 30 + 20
     box_surface = pygame.Surface((box_width, box_height))
     box_surface.fill((255,255,255))
-    text_surface = font.render(text, True, (255,255,255))
-    text_rect = text_surface.get_rect()
-    text_rect.center = (screen.get_width() // 2, screen.get_height() //2)
+    y_offset = 10
+    for line in lines:
+        text_surface = font.render(line, True, (255,255,255))
+        text_rect = text_surface.get_rect()
+        text_rect.center = (screen.get_width() // 2, screen.get_height() //2)
     screen.blit(text_surface, text_rect)
     pygame.display.flip()
 
