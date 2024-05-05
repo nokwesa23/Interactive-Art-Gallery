@@ -14,11 +14,17 @@ def load_artworks_from_file(filename):
     return artworks
 
 
-def display_artworks(screen, artworks, start_index, artworks_per_page):
+def display_artworks(screen, artworks, start_index, artworks_per_page, current_page):
     screen.fill((0,0,0))
     max_artwork_width = (screen.get_width() - (artworks_per_page + 1) * 20) // artworks_per_page
     max_artwork_height = (screen.get_height() - 3 * 30) // 2
     y_offset = (screen.get_height() - max_artwork_height) // 2 
+    font = pygame.font.SysFont(None, 24)
+    text_surface = font.render(f"Interactive Art Gallery - Room {current_page + 1}", True, (255, 255, 255))
+    text_rect = text_surface.get_rect()
+    text_rect.centerx = screen.get_width() // 2
+    text_rect.y = 20
+    screen.blit(text_surface, text_rect)
     for i, artwork in enumerate(artworks[start_index:start_index + artworks_per_page]):
         image_path, title, artist, description = artwork
         artwork_image = pygame.image.load(image_path)
@@ -35,6 +41,7 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
         render_button(screen, pygame.font.SysFont(None, 24), max_artwork_height, x_offset, y_offset)
 
     pygame.display.flip()
+
 
 def render_button(screen, font, max_artwork_height, x_offset, y_offset):
     button_text = "Learn more about this artwork"
@@ -81,7 +88,7 @@ def main():
     artworks_per_page = 2
     font = pygame.font.SysFont(None, 24)
     current_page = 0
-    display_info =  False
+    display_info = False
     info_index = None
     running = True
     while running:
@@ -92,7 +99,7 @@ def main():
                 if event.key == pygame.K_LEFT:
                     current_page = max(current_page - 1, 0)
                 elif event.key == pygame.K_RIGHT:
-                    current_page = min(current_page + 1, len(artworks) // artworks_per_page )
+                    current_page = min(current_page + 1, len(artworks) // artworks_per_page)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.pos[0] < screen.get_width() / 2:
                     index = 0
@@ -109,9 +116,10 @@ def main():
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         waiting_for_click = False 
             display_info = False
-        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
-
+        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page, current_page)  # Pass current_page here
+    
     pygame.quit()
 
 if __name__ == "__main__":
     main()
+
