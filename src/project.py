@@ -85,8 +85,17 @@ def main():
                     index = 0
                 else:
                     index = 1
-                
-                display_artwork_info(screen, font, artworks, current_page, index)
+                display_info = True
+                info_index = index
+        if display_info:
+            display_artwork_info(screen, font, artworks, current_page, info_index)
+            pygame.display.flip()
+            waiting_for_click = True
+            while waiting_for_click:
+                for event in pygame.event.get():
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        waiting_for_click = False 
+            display_info = False
         display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
 
     pygame.quit()
