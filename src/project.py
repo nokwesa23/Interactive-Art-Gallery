@@ -52,6 +52,9 @@ def display_artwork_info(artworks, current_page, index):
     else:
         print("Invaild artwork information:", artwork_info)
 
+def render_text(screen, font, text):
+    
+
 def main():
     pygame.init() 
     pygame.display.set_caption("Interactive Art Gallery")
