@@ -32,9 +32,8 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
         artwork_image = pygame.transform.scale(artwork_image, (new_width,new_height))
         x_offset = max_artwork_width * i - (new_width - max_artwork_width) // 2
         screen.blit(artwork_image, (x_offset,y_offset))
-        render_button(screen, max_artwork_height, x_offset, y_offset)
+        render_button(screen, pygame.font.SysFont(None, 24), max_artwork_height, x_offset, y_offset)
 
-        # need to add other things on screen to display
     pygame.display.flip()
 
 def render_button(screen, font, max_artwork_height, x_offset, y_offset):
@@ -54,32 +53,27 @@ def main():
     pygame.display.set_caption("Interactive Art Gallery")
     screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     artworks = load_artworks_from_file('artworks.txt')
-    # current_room = 'Room 1'
     artworks_per_page = 2
     current_page = 0
-    font = pygame.font.SysFont(None, 24)
-    text_surface = font.render("Learn more about the artwork", True, (255,255,255))
-    text_rect = text_surface.get_rect()
-    text_rect.topleft = (50,50)
     running = True
     while running:
         for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
-                        current_page = max(current_page - 1, 0)
-                    elif event.key == pygame.K_RIGHT:
-                        current_page = min(current_page + 1, len(artworks) // artworks_per_page )
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if text_rect.collidepoint(event.pos):
-                        index = 0 if event.pos[0] < screen.get_width() / 2 else 1
-                        display_artwork_info(artworks, current_page, index)
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    current_page = max(current_page - 1, 0)
+                elif event.key == pygame.K_RIGHT:
+                    current_page = min(current_page + 1, len(artworks) // artworks_per_page )
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.pos[0] < screen.get_width() / 2:
+                    index = 0
+                else:
+                    index = 1
+                display_artwork_info(artworks, current_page, index)
         display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
 
     pygame.quit()
-
-
 
 if __name__ == "__main__":
     main()
