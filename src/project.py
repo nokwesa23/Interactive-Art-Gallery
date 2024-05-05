@@ -47,8 +47,9 @@ def display_description(screen, description):
         text_surface = font.render(line, True, (0,0,0))
         description_surface.blit(text_surface, (20, y_offset))
         y_offset += 30
-    
-    
+    screen.blit(description_surface, ((screen.get_width() - description_surface.get_width()) // 2
+                                      (screen.get_height() - description_surface.get_height()) // 2))
+    pygame.display.flip()
     return
 
 def main():
