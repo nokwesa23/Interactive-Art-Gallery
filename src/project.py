@@ -44,6 +44,7 @@ def render_button(screen, font, max_artwork_height, x_offset, y_offset):
     screen.blit(button_text_surface, button_text_rect)
 
 def display_artwork_info(screen, font, artworks, current_page, index):
+    font = pygame.font.SysFont(None, 24, (0,0,0))
     artworks_per_page = 2
     artwork_info = artworks[current_page * artworks_per_page + index]
     if len(artwork_info) >= 4:
