@@ -39,7 +39,6 @@ def display_artworks(screen, artworks, start_index, artworks_per_page, current_p
         x_offset = max_artwork_width * i - (new_width - max_artwork_width) // 2
         screen.blit(artwork_image, (x_offset,y_offset))
         render_button(screen, pygame.font.SysFont(None, 24), max_artwork_height, x_offset, y_offset)
-
     pygame.display.flip()
 
 
@@ -91,6 +90,9 @@ def main():
     display_info = False
     info_index = None
     running = True
+    max_pages = len(artworks) // artworks_per_page
+    if len(artworks) % artworks_per_page != 0:
+        max_pages += 1
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -99,7 +101,7 @@ def main():
                 if event.key == pygame.K_LEFT:
                     current_page = max(current_page - 1, 0)
                 elif event.key == pygame.K_RIGHT:
-                    current_page = min(current_page + 1, len(artworks) // artworks_per_page)
+                    current_page = min(current_page + 1, max_pages - 1)  # Adjusted here to limit to max_pages
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.pos[0] < screen.get_width() / 2:
                     index = 0
@@ -116,10 +118,9 @@ def main():
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         waiting_for_click = False 
             display_info = False
-        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page, current_page)  # Pass current_page here
+        display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page, current_page)
     
     pygame.quit()
 
 if __name__ == "__main__":
     main()
-
