@@ -39,6 +39,7 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
 
 def display_description(screen, descriptioon):
     
+    return
 
 def main():
     pygame.init() 
