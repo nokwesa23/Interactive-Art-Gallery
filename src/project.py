@@ -32,7 +32,7 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
         artwork_image = pygame.transform.scale(artwork_image, (new_width,new_height))
         x_offset = max_artwork_width * i - (new_width - max_artwork_width) // 2
         screen.blit(artwork_image, (x_offset,y_offset))
-        
+        render_button(screen, max_artwork_height, x_offset, y_offset)
 
         # need to add other things on screen to display
     pygame.display.flip()
