@@ -58,6 +58,10 @@ def display_artwork_info(screen, font, artworks, current_page, index):
         print("Invaild artwork information:", artwork_info)
 
 def render_text(screen, font, lines):
+    box_width = 400
+    box_height = len(lines) * 30 + 20
+    box_surface = pygame.Surface((box_width, box_height))
+    box_surface.fill((255,255,255))
     text_surface = font.render(text, True, (255,255,255))
     text_rect = text_surface.get_rect()
     text_rect.center = (screen.get_width() // 2, screen.get_height() //2)
