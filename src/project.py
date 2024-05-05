@@ -50,7 +50,10 @@ def display_description(screen, description):
     screen.blit(description_surface, ((screen.get_width() - description_surface.get_width()) // 2
                                       (screen.get_height() - description_surface.get_height()) // 2))
     pygame.display.flip()
-    return
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                return
 
 def main():
     pygame.init() 
