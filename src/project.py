@@ -37,6 +37,12 @@ def display_artworks(screen, artworks, start_index, artworks_per_page):
         # need to add other things on screen to display
     pygame.display.flip()
 
+def render_button(screen, font, max_artwork_height, x_offset, y_offset):
+    button_text = "Learn more about this artwork"
+    button_text_surface = font.render(button_text, True, (255,255,255))
+    button_text_rect = button_text_surface.get_rect()
+    button_text_rect.topleft = (x_offset, y_offset + max_artwork_height + 10)
+    screen.blit(button_text_surface, button_text_rect)
 
 def display_artwork_info(artworks, current_page, index):
     artworks_per_page = 2
