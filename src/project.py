@@ -68,6 +68,8 @@ def main():
     artworks_per_page = 2
     font = pygame.font.SysFont(None, 24)
     current_page = 0
+    display_info =  False
+    info_index = None
     running = True
     while running:
         for event in pygame.event.get():
@@ -83,6 +85,7 @@ def main():
                     index = 0
                 else:
                     index = 1
+                
                 display_artwork_info(screen, font, artworks, current_page, index)
         display_artworks(screen, artworks, current_page * artworks_per_page, artworks_per_page )
 
